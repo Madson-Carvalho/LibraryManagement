@@ -5,7 +5,6 @@ public class UserMenu {
 
     private Scanner read = new Scanner(System.in);
     private UserResgistration userResgistration = new UserResgistration();
-    private GeneralMenu generalMenu = new GeneralMenu();
 
     public UserMenu() {
         setOption(option);
@@ -21,7 +20,7 @@ public class UserMenu {
 
     public void showMenu() {
         do {
-            System.out.println("Escolha uma das opções abaixo \n 1 - Criar usuário \n 2 - Editar usuário \n 3 - Remover usuário \n 4 - Listar usuários \n 5 - Sair \n");
+            System.out.println("Escolha uma das opções abaixo \n 1 - Criar usuário \n 2 - Editar usuário \n 3 - Remover usuário \n 4 - Listar usuários \n 5 - Voltar \n");
             setOption(read.nextInt());
         } while (getOption() > 5 || getOption() < 1);
 
@@ -47,6 +46,7 @@ public class UserMenu {
                 this.showMenu();
                 break;
             case 5:
+                GeneralMenu generalMenu = new GeneralMenu();
                 generalMenu.showGeneralMenu();
         }
 

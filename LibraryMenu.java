@@ -5,7 +5,7 @@ public class LibraryMenu {
 
     private BookResgistration bookResgistration = new BookResgistration();
     private BorrowAndReturnBook borrowAndReturnBook = new BorrowAndReturnBook();
-//    private GeneralMenu generalMenu = new GeneralMenu();
+
     private Scanner read = new Scanner(System.in);
 
     public LibraryMenu() {
@@ -23,7 +23,7 @@ public class LibraryMenu {
     public void showMenu() {
         do {
             System.out.println("Escolha uma das opções abaixo: \n 1 - Adicionar livro \n 2 - Editar livro \n 3 - Remover livro" +
-                    "\n 4 - Listar livros \n 5 - Emprestar livro \n 6 - Devolver livro \n 7 - Sair \n");
+                    "\n 4 - Listar livros \n 5 - Emprestar livro \n 6 - Devolver livro \n 7 - Voltar \n");
             setOption(read.nextInt());
         } while (getOption() > 7 || getOption() < 1);
 
@@ -55,8 +55,9 @@ public class LibraryMenu {
             case 6:
                 System.out.println("asd");
                 break;
-//            case 7:
-//                this.generalMenu.showGeneralMenu();
+            case 7:
+                GeneralMenu generalMenu = new GeneralMenu();
+                generalMenu.showGeneralMenu();
         }
 
     }
