@@ -5,8 +5,6 @@ public class BorrowAndReturnBook {
     private String borrowBook;
     private int userId;
 
-    private UserResgistration userResgistration = new UserResgistration();
-    private BookResgistration bookResgistration = new BookResgistration();
     private Scanner read = new Scanner(System.in);
 
     public void setBorrowBook(String borrowBook) {
@@ -25,7 +23,7 @@ public class BorrowAndReturnBook {
         return userId;
     }
 
-    public void borrowBook () {
+    public void borrowBook (BookResgistration bookResgistration, UserResgistration userResgistration) {
 
         System.out.println("Digite o nome do livro emprestado");
         setBorrowBook(read.nextLine());
@@ -41,8 +39,30 @@ public class BorrowAndReturnBook {
         ArrayList<Books> books = bookResgistration.getBooks();
 
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getTitle() == getBorrowBook()) {
+            if (books.get(i).getTitle().equals(getBorrowBook())) {
                 books.get(i).setBorrowedAmount(books.get(i).getBorrowedAmount() + 1);
+            }
+        }
+    }
+
+    public void returnBook (BookResgistration bookResgistration, UserResgistration userResgistration) {
+
+        System.out.println("Digite o nome do livro devolvido");
+        setBorrowBook(read.nextLine());
+
+        userResgistration.listUser();
+
+        System.out.println("Digite o id do Usuário que devolveu o livro");
+        setUserId(read.nextInt());
+        User user = userResgistration.getUsers().get(getUserId());
+
+        user.setBorrowedBooks(getBorrowBook());
+
+        ArrayList<Books> books = bookResgistration.getBooks();
+
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(getBorrowBook())) {
+                books.get(i).setBorrowedAmount(books.get(i).getBorrowedAmount() - 1);
             }
         }
     }

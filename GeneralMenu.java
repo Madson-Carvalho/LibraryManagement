@@ -15,7 +15,7 @@ public class GeneralMenu {
         return this.option;
     }
 
-    public void showGeneralMenu() {
+    public void showGeneralMenu(UserResgistration userResgistration) {
         do {
             System.out.println("Escolha uma das opções abaixo: \n 1 - Gerenciar usuários \n 2 - Gerenciar livros \n");
             setOption(read.nextInt());
@@ -23,10 +23,10 @@ public class GeneralMenu {
 
         switch (getOption()) {
             case 1:
-                userMenu.showMenu();
+                userMenu.showMenu(this);
                 break;
             case 2:
-                libraryMenu.showMenu();
+                libraryMenu.showMenu(this, userResgistration);
         }
     }
 

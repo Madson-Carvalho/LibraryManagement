@@ -6,7 +6,7 @@ public class User {
     private String password;
     private String cpf;
     private String email;
-    private ArrayList<String> borrowedBooks;
+    private ArrayList<String> borrowedBooks = new ArrayList<String>();
 
     public User() {
         setFullName(fullName);

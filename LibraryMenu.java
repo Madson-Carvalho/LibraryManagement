@@ -20,7 +20,7 @@ public class LibraryMenu {
         return this.option;
     }
 
-    public void showMenu() {
+    public void showMenu(GeneralMenu menu, UserResgistration userResgistration) {
         do {
             System.out.println("Escolha uma das opções abaixo: \n 1 - Adicionar livro \n 2 - Editar livro \n 3 - Remover livro" +
                     "\n 4 - Listar livros \n 5 - Emprestar livro \n 6 - Devolver livro \n 7 - Voltar \n");
@@ -30,34 +30,33 @@ public class LibraryMenu {
         switch (getOption()) {
             case 1:
                 bookResgistration.createBook();
-                this.showMenu();
+                this.showMenu(menu, userResgistration);
                 break;
             case 2:
                 System.out.println("Para editar informe o número do id do livro");
                 int idEdit = read.nextInt();
                 bookResgistration.editBook(idEdit);
-                this.showMenu();
+                this.showMenu(menu, userResgistration);
                 break;
             case 3:
                 System.out.println("Para remover informe o número do id do livro");
                 int idRemove = read.nextInt();
                 bookResgistration.removeBook(idRemove);
-                this.showMenu();
+                this.showMenu(menu, userResgistration);
                 break;
             case 4:
                 bookResgistration.listBooks();
-                this.showMenu();
+                this.showMenu(menu, userResgistration);
                 break;
             case 5:
-                borrowAndReturnBook.borrowBook();
-                this.showMenu();
+                borrowAndReturnBook.borrowBook(this.bookResgistration, userResgistration);
+                this.showMenu(menu, userResgistration);
                 break;
             case 6:
                 System.out.println("asd");
                 break;
             case 7:
-                GeneralMenu generalMenu = new GeneralMenu();
-                generalMenu.showGeneralMenu();
+                menu.showGeneralMenu(userResgistration);
         }
 
     }

@@ -18,7 +18,7 @@ public class UserMenu {
         return this.option;
     }
 
-    public void showMenu() {
+    public void showMenu(GeneralMenu menu) {
         do {
             System.out.println("Escolha uma das opções abaixo \n 1 - Criar usuário \n 2 - Editar usuário \n 3 - Remover usuário \n 4 - Listar usuários \n 5 - Voltar \n");
             setOption(read.nextInt());
@@ -27,27 +27,26 @@ public class UserMenu {
         switch (getOption()) {
             case 1:
                 userResgistration.createUser();
-                this.showMenu();
+                this.showMenu(menu);
                 break;
             case 2:
                 System.out.println("Para editar informe o número do id do usuário");
                 int idEdit = read.nextInt();
                 userResgistration.editUser(idEdit);
-                this.showMenu();
+                this.showMenu(menu);
                 break;
             case 3:
                 System.out.println("Para remover informe o número do id do usuário");
                 int idRemove = read.nextInt();
                 userResgistration.removeUser(idRemove);
-                this.showMenu();
+                this.showMenu(menu);
                 break;
             case 4:
                 userResgistration.listUser();
-                this.showMenu();
+                this.showMenu(menu);
                 break;
             case 5:
-                GeneralMenu generalMenu = new GeneralMenu();
-                generalMenu.showGeneralMenu();
+                menu.showGeneralMenu(this.userResgistration);
         }
 
     }
